@@ -109,10 +109,9 @@ sudo apt install python3 python3-pip python3-venv git -y
 Clone the repository:
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/email-account-finder.git
+git clone https://github.com/prajwolacharyaa/email-account-finder.git
 ```
 
-Replace `YOUR-USERNAME` with your GitHub username.
 
 Enter the project directory:
 
@@ -182,10 +181,9 @@ Open Command Prompt or PowerShell.
 Clone the repository:
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/email-account-finder.git
+git clone https://github.com/prajwolacharyaa/email-account-finder.git
 ```
 
-Replace `YOUR-USERNAME` with your GitHub username.
 
 Enter the project directory:
 
@@ -258,10 +256,9 @@ brew install python git
 Clone the repository:
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/email-account-finder.git
+git clone https://github.com/prajwolacharyaa/email-account-finder.git
 ```
 
-Replace `YOUR-USERNAME` with your GitHub username.
 
 Enter the project directory:
 
@@ -438,11 +435,10 @@ git init
 git add .
 git commit -m "Initial Email Account Finder project"
 git branch -M main
-git remote add origin https://github.com/YOUR-USERNAME/email-account-finder.git
+git remote add origin https://github.com/prajwolacharyaa/email-account-finder.git
 git push -u origin main
 ```
 
-Replace `YOUR-USERNAME` with your GitHub username.
 
 ## Beginner Notes
 
