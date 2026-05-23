@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Email Account Finder</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  </head>
+  <body>
+    <main class="shell">
+      <section class="scanner">
+        <div class="brand-row">
+          <div>
+            <p class="eyebrow">OSINT Profiler</p>
+            <h1>Email Account Finder</h1>
+          </div>
+          <span class="status-pill">Legal public checks only</span>
+        </div>
+
+        <form id="scan-form" class="scan-form">
+          <label for="email">Target email</label>
+          <div class="input-row">
+            <input id="email" name="email" type="email" placeholder="name@example.com" autocomplete="off" required>
+            <button id="scan-button" type="submit">Search</button>
+          </div>
+          <p class="hint">Use this only for your own accounts or authorized investigations.</p>
+        </form>
+
+        <div id="loader" class="loader hidden">
+          <span></span>
+          <span></span>
+          <span></span>
+          Scanning public sources...
+        </div>
+
+        <div id="message" class="message hidden"></div>
+
+        <div class="toolbar">
+          <button id="export-csv" type="button" disabled>Export CSV</button>
+          <button id="export-pdf" type="button" disabled>Export PDF</button>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Website</th>
+                <th>Status</th>
+                <th>Link</th>
+                <th>Method</th>
+                <th>Note</th>
+              </tr>
+            </thead>
+            <tbody id="results-body">
+              <tr>
+                <td colspan="5" class="empty">Enter an email address to start a scan.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <aside class="history">
+        <h2>Search History</h2>
+        <div id="history-list" class="history-list">
+          <p class="empty">No searches yet.</p>
+        </div>
+      </aside>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>
