@@ -1,34 +1,63 @@
 # Email Account Finder
 
-Email Account Finder is a beginner-friendly cybersecurity and OSINT project. A user enters an email address, and the tool checks public sources for account-related signals on popular websites.
+Email Account Finder is a beginner-friendly cybersecurity and OSINT tool that checks whether an email address has public account-related signals across popular websites.
 
-This project is designed for learning, portfolio use, and legal OSINT workflows on Kali Linux.
+The project is built for learning, ethical OSINT practice, and portfolio use. It includes both a web interface and a command-line interface, making it suitable for Kali Linux users, Windows users, and macOS users.
 
-## Important Legal Notice
+> This tool only uses public information and legal methods. It does not hack accounts, bypass passwords, brute force logins, scrape private data, or perform illegal account enumeration.
 
-Use this tool only for:
+## Project Objective
 
-- Your own email addresses
-- Authorized security testing
-- OSINT training in a legal environment
-- Public information gathering
+The goal of Email Account Finder is to help users enter an email address and check for public signals that may indicate whether the email is connected to accounts or public profiles on popular websites.
 
-This tool does not hack accounts, bypass passwords, brute force logins, scrape private data, or evade rate limits. Many major websites intentionally block automated account enumeration, so the app marks those sites as `Manual Review`.
+The tool shows:
+
+- Website name
+- Account status
+- Possible profile or recovery/help link
+- Method used
+- Notes explaining the result
 
 ## Features
 
 - Simple email input box
 - Search button
-- Public checks across multiple websites
+- Scans multiple popular websites
 - Clean results table
-- Dark cybersecurity-style interface
+- Dark cybersecurity-style design
 - Loading animation while scanning
-- Local search history
-- Export results to CSV or PDF
-- Web app and CLI mode
-- Beginner-friendly Python code with comments
+- Saves local search history
+- Export results to CSV
+- Export results to PDF
+- Web interface for localhost use
+- CLI mode for terminal users
+- Beginner-friendly Python code
+- Useful for ethical OSINT learning
 
-## What The Statuses Mean
+## Legal And Ethical Use
+
+Use this project only for:
+
+- Your own email addresses
+- Authorized security testing
+- Educational OSINT practice
+- Public information gathering
+- Portfolio or classroom demonstrations
+
+Do not use this project for:
+
+- Harassment
+- Stalking
+- Unauthorized investigations
+- Credential attacks
+- Password reset abuse
+- Account takeover attempts
+- Bypassing login systems
+- Scraping private user data
+
+Many major websites intentionally prevent automated email account checks. For those websites, this tool shows `Manual Review` and provides an official public help or recovery page.
+
+## Status Meanings
 
 | Status | Meaning |
 | --- | --- |
@@ -36,25 +65,19 @@ This tool does not hack accounts, bypass passwords, brute force logins, scrape p
 | Possible Match | A public profile exists for a username guessed from the email local part. This does not prove ownership. |
 | Not Found | No public signal was found for that check. |
 | Unknown | The check could not complete because of network, API, or rate-limit issues. |
-| Manual Review | The website restricts reliable automated email checks. A legal public help/recovery link is provided. |
+| Manual Review | The website restricts reliable automated checks. A legal public help or recovery link is provided. |
 
 ## Websites Covered
 
-Direct or public-signal checks:
-
-- Gravatar
-- GitHub public user search
-- Reddit username profile
-- TikTok username profile
-- GitHub username profile
-- Twitter/X username profile
-- Instagram username profile
-
-Manual review links:
+The tool includes public checks or safe review links for services such as:
 
 - Facebook
 - Instagram
+- Twitter/X
 - LinkedIn
+- GitHub
+- Reddit
+- TikTok
 - Discord
 - Spotify
 - Google
@@ -62,28 +85,62 @@ Manual review links:
 - Amazon
 - Netflix
 - PayPal
+- Gravatar
 
-## Installation On Kali Linux
+Some platforms allow limited public profile checks. Others block reliable automated account confirmation, so they are marked for manual review.
+
+## Installation And Setup
+
+### Kali Linux Setup
+
+Update your system:
+
+```bash
+sudo apt update
+sudo apt upgrade -y
+```
+
+Install required packages:
+
+```bash
+sudo apt install python3 python3-pip python3-venv git -y
+```
+
+Clone the repository:
 
 ```bash
 git clone https://github.com/YOUR-USERNAME/email-account-finder.git
+```
+
+Replace `YOUR-USERNAME` with your GitHub username.
+
+Enter the project directory:
+
+```bash
 cd email-account-finder
+```
+
+Create a virtual environment:
+
+```bash
 python3 -m venv .venv
+```
+
+Activate the virtual environment:
+
+```bash
 source .venv/bin/activate
+```
+
+Install requirements:
+
+```bash
 pip install -r requirements.txt
 ```
 
-You can also run:
+Run the web app:
 
 ```bash
-chmod +x setup.sh
-./setup.sh
-```
-
-## Run The Web App
-
-```bash
-source .venv/bin/activate
 python app.py
 ```
 
@@ -93,17 +150,190 @@ Open this URL in your browser:
 http://127.0.0.1:5000
 ```
 
-## Run The CLI Tool
+You can also use the included setup script on Kali Linux:
+
+```bash
+chmod +x setup.sh
+./setup.sh
+```
+
+### Windows Setup
+
+Install Python from:
+
+```text
+https://www.python.org/downloads/
+```
+
+During installation, enable:
+
+```text
+Add Python to PATH
+```
+
+Install Git from:
+
+```text
+https://git-scm.com/downloads
+```
+
+Open Command Prompt or PowerShell.
+
+Clone the repository:
+
+```bash
+git clone https://github.com/YOUR-USERNAME/email-account-finder.git
+```
+
+Replace `YOUR-USERNAME` with your GitHub username.
+
+Enter the project directory:
+
+```bash
+cd email-account-finder
+```
+
+Create a virtual environment:
+
+```bash
+python -m venv .venv
+```
+
+Activate the virtual environment in Command Prompt:
+
+```bash
+.venv\Scripts\activate
+```
+
+Activate the virtual environment in PowerShell:
+
+```bash
+.venv\Scripts\Activate.ps1
+```
+
+If PowerShell blocks activation, run:
+
+```bash
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+```
+
+Then try again:
+
+```bash
+.venv\Scripts\Activate.ps1
+```
+
+Install requirements:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the web app:
+
+```bash
+python app.py
+```
+
+Open this URL in your browser:
+
+```text
+http://127.0.0.1:5000
+```
+
+### macOS Setup
+
+Install Homebrew from:
+
+```text
+https://brew.sh/
+```
+
+Install Python and Git:
+
+```bash
+brew install python git
+```
+
+Clone the repository:
+
+```bash
+git clone https://github.com/YOUR-USERNAME/email-account-finder.git
+```
+
+Replace `YOUR-USERNAME` with your GitHub username.
+
+Enter the project directory:
+
+```bash
+cd email-account-finder
+```
+
+Create a virtual environment:
+
+```bash
+python3 -m venv .venv
+```
+
+Activate the virtual environment:
 
 ```bash
 source .venv/bin/activate
+```
+
+Install requirements:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the web app:
+
+```bash
+python app.py
+```
+
+Open this URL in your browser:
+
+```text
+http://127.0.0.1:5000
+```
+
+## Running The Tool
+
+### Web Mode
+
+Start the Flask web app:
+
+```bash
+python app.py
+```
+
+Then visit:
+
+```text
+http://127.0.0.1:5000
+```
+
+Enter an email address and click the search button.
+
+### CLI Mode
+
+You can also run the tool directly from the terminal:
+
+```bash
 python cli.py target@example.com
 ```
 
-Export from CLI:
+Export results to CSV:
 
 ```bash
 python cli.py target@example.com --csv
+```
+
+Export results to PDF:
+
+```bash
 python cli.py target@example.com --pdf
 ```
 
@@ -116,37 +346,134 @@ Gravatar          | Found          | https://www.gravatar.com/...
 GitHub            | Not Found      | -
 Reddit            | Possible Match | https://www.reddit.com/user/...
 Facebook          | Manual Review  | https://www.facebook.com/login/identify
+Instagram         | Manual Review  | https://www.instagram.com/accounts/password/reset/
 ```
 
-## Project Structure
+## Exporting Results
+
+The tool supports:
+
+- CSV export
+- PDF export
+
+Exports are useful for:
+
+- OSINT reports
+- Cybersecurity class projects
+- Portfolio demonstrations
+- Authorized investigation notes
+
+## Troubleshooting
+
+### `python` Command Not Found
+
+Try:
+
+```bash
+python3 --version
+```
+
+Then use `python3` instead of `python`.
+
+### `pip` Command Not Found
+
+Try:
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+or:
+
+```bash
+python3 -m pip install -r requirements.txt
+```
+
+### Flask Is Not Installed
+
+Run:
+
+```bash
+pip install -r requirements.txt
+```
+
+Make sure your virtual environment is activated first.
+
+### Port 5000 Is Already In Use
+
+Stop the other process or change the port in `app.py`.
+
+Example:
+
+```python
+app.run(host="127.0.0.1", port=5050, debug=False)
+```
+
+Then open:
 
 ```text
-email-account-finder/
-├── app.py
-├── cli.py
-├── scanner.py
-├── requirements.txt
-├── setup.sh
-├── templates/
-│   └── index.html
-├── static/
-│   ├── app.js
-│   └── styles.css
-└── README.md
+http://127.0.0.1:5050
 ```
 
-## Notes For GitHub Upload
+### PowerShell Blocks Virtual Environment Activation
 
-Before uploading:
+Run:
+
+```bash
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+```
+
+Then activate again:
+
+```bash
+.venv\Scripts\Activate.ps1
+```
+
+## Uploading To GitHub
+
+If this project is not already uploaded to GitHub, use these commands:
 
 ```bash
 git init
 git add .
 git commit -m "Initial Email Account Finder project"
+git branch -M main
+git remote add origin https://github.com/YOUR-USERNAME/email-account-finder.git
+git push -u origin main
 ```
 
-Then create a GitHub repository named `email-account-finder` and push your code.
+Replace `YOUR-USERNAME` with your GitHub username.
+
+## Beginner Notes
+
+This project is intentionally simple so beginners can understand how it works.
+
+Main concepts used:
+
+- Python
+- Flask
+- HTML
+- CSS
+- JavaScript
+- Requests
+- Public OSINT checks
+- CSV export
+- PDF report generation
+
+You can improve this project by adding:
+
+- More public OSINT sources
+- Better rate-limit handling
+- API key support for official services
+- Better report templates
+- Docker support
+- Authentication for private local use
+- More advanced result filtering
 
 ## Disclaimer
 
-This project is for educational and authorized OSINT use only. The results may be incomplete or inaccurate because websites change their public behavior and many services intentionally prevent account enumeration.
+Email Account Finder is made for educational and authorized OSINT use only.
+
+The results may be incomplete, outdated, or inaccurate because websites frequently change their public behavior and many services intentionally prevent email-based account discovery.
+
+The developer is not responsible for misuse of this tool. Always follow the law, respect privacy, and only investigate accounts you own or are authorized to test.
