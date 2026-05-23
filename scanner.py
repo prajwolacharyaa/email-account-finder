@@ -1,4 +1,4 @@
-"""Core OSINT scanning logic for Email Account Finder.
+"""Core OSINT scanning logic for account_finder.
 
 This module only uses public, legal lookups. It does not attempt login,
 password reset abuse, bypassing, scraping private data, or rate-limit evasion.
@@ -44,7 +44,7 @@ def fetch_url(url: str, method: str = "GET") -> requests.Response | None:
     """Fetch a public URL with a short timeout and friendly user agent."""
     headers = {
         "User-Agent": (
-            "EmailAccountFinder/1.0 "
+            "account_finder/1.0 "
             "(public OSINT educational project; no login or bypass attempts)"
         )
     }
@@ -192,7 +192,7 @@ def export_csv(email: str, results: Iterable[ScanResult]) -> Path:
     """Export scan results to a CSV file."""
     EXPORT_DIR.mkdir(exist_ok=True)
     timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
-    path = EXPORT_DIR / f"email-account-finder-{timestamp}.csv"
+    path = EXPORT_DIR / f"account_finder-{timestamp}.csv"
 
     with path.open("w", encoding="utf-8", newline="") as csv_file:
         writer = csv.DictWriter(csv_file, fieldnames=["website", "status", "link", "method", "note"])
@@ -213,14 +213,14 @@ def export_pdf(email: str, results: Iterable[ScanResult]) -> Path:
 
     EXPORT_DIR.mkdir(exist_ok=True)
     timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
-    path = EXPORT_DIR / f"email-account-finder-{timestamp}.pdf"
+    path = EXPORT_DIR / f"account_finder-{timestamp}.pdf"
 
     pdf = canvas.Canvas(str(path), pagesize=letter)
     width, height = letter
     y = height - 50
 
     pdf.setFont("Helvetica-Bold", 16)
-    pdf.drawString(50, y, "Email Account Finder Report")
+    pdf.drawString(50, y, "account_finder Report")
     y -= 25
 
     pdf.setFont("Helvetica", 10)

@@ -1,4 +1,4 @@
-"""Flask web app for Email Account Finder."""
+"""Flask web app for account_finder."""
 
 from __future__ import annotations
 

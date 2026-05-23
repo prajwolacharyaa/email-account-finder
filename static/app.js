@@ -112,7 +112,7 @@ async function exportResults(type) {
   const url = window.URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url;
-  link.download = `email-account-finder.${type}`;
+  link.download = `account_finder.${type}`;
   link.click();
   window.URL.revokeObjectURL(url);
 }

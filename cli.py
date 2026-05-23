@@ -1,4 +1,4 @@
-"""Command-line interface for Email Account Finder."""
+"""Command-line interface for account_finder."""
 
 from __future__ import annotations
 
@@ -19,7 +19,7 @@ def print_table(results) -> None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Legal OSINT email account finder.")
+    parser = argparse.ArgumentParser(description="Legal OSINT account_finder email review tool.")
     parser.add_argument("email", help="Email address to check")
     parser.add_argument("--csv", action="store_true", help="Export results to CSV")
     parser.add_argument("--pdf", action="store_true", help="Export results to PDF")

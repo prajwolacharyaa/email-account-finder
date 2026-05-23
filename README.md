@@ -1,6 +1,6 @@
-# Email Account Finder
+# account_finder
 
-Email Account Finder is a beginner-friendly cybersecurity and OSINT tool that checks public email-related signals and provides safe official review links for popular websites.
+account_finder is a beginner-friendly cybersecurity and OSINT tool that checks public email-related signals and provides safe official review links for popular websites.
 
 The project is built for learning, ethical OSINT practice, and portfolio use. It includes both a web interface and a command-line interface, making it suitable for Kali Linux users, Windows users, and macOS users.
 
@@ -8,7 +8,7 @@ The project is built for learning, ethical OSINT practice, and portfolio use. It
 
 ## Project Objective
 
-The goal of Email Account Finder is to help users enter an email address and review legal public signals that may indicate whether the email appears in public account-related sources.
+The goal of account_finder is to help users enter an email address and review legal public signals that may indicate whether the email appears in public account-related sources.
 
 The tool shows:
 
@@ -109,14 +109,14 @@ sudo apt install python3 python3-pip python3-venv git -y
 Clone the repository:
 
 ```bash
-git clone https://github.com/prajwolacharyaa/email-account-finder.git
+git clone https://github.com/prajwolacharyaa/account_finder.git
 ```
 
 
 Enter the project directory:
 
 ```bash
-cd email-account-finder
+cd account_finder
 ```
 
 Create a virtual environment:
@@ -181,14 +181,14 @@ Open Command Prompt or PowerShell.
 Clone the repository:
 
 ```bash
-git clone https://github.com/prajwolacharyaa/email-account-finder.git
+git clone https://github.com/prajwolacharyaa/account_finder.git
 ```
 
 
 Enter the project directory:
 
 ```bash
-cd email-account-finder
+cd account_finder
 ```
 
 Create a virtual environment:
@@ -256,14 +256,14 @@ brew install python git
 Clone the repository:
 
 ```bash
-git clone https://github.com/prajwolacharyaa/email-account-finder.git
+git clone https://github.com/prajwolacharyaa/account_finder.git
 ```
 
 
 Enter the project directory:
 
 ```bash
-cd email-account-finder
+cd account_finder
 ```
 
 Create a virtual environment:
@@ -433,9 +433,9 @@ If this project is not already uploaded to GitHub, use these commands:
 ```bash
 git init
 git add .
-git commit -m "Initial Email Account Finder project"
+git commit -m "Initial account_finder project"
 git branch -M main
-git remote add origin https://github.com/prajwolacharyaa/email-account-finder.git
+git remote add origin https://github.com/prajwolacharyaa/account_finder.git
 git push -u origin main
 ```
 
@@ -468,7 +468,7 @@ You can improve this project by adding:
 
 ## Disclaimer
 
-Email Account Finder is made for educational and authorized OSINT use only.
+account_finder is made for educational and authorized OSINT use only.
 
 The results may be incomplete, outdated, or inaccurate because websites frequently change their public behavior and many services intentionally prevent email-based account discovery.
 
