@@ -1,6 +1,6 @@
 # Email Account Finder
 
-Email Account Finder is a beginner-friendly cybersecurity and OSINT tool that checks whether an email address has public account-related signals across popular websites.
+Email Account Finder is a beginner-friendly cybersecurity and OSINT tool that checks public email-related signals and provides safe official review links for popular websites.
 
 The project is built for learning, ethical OSINT practice, and portfolio use. It includes both a web interface and a command-line interface, making it suitable for Kali Linux users, Windows users, and macOS users.
 
@@ -8,13 +8,13 @@ The project is built for learning, ethical OSINT practice, and portfolio use. It
 
 ## Project Objective
 
-The goal of Email Account Finder is to help users enter an email address and check for public signals that may indicate whether the email is connected to accounts or public profiles on popular websites.
+The goal of Email Account Finder is to help users enter an email address and review legal public signals that may indicate whether the email appears in public account-related sources.
 
 The tool shows:
 
 - Website name
 - Account status
-- Possible profile or recovery/help link
+- Public source or official recovery/help link
 - Method used
 - Notes explaining the result
 
@@ -24,7 +24,7 @@ The tool shows:
 - Search button
 - Scans multiple popular websites
 - Clean results table
-- Dark cybersecurity-style design
+- Clean, human-friendly interface
 - Loading animation while scanning
 - Saves local search history
 - Export results to CSV
@@ -55,17 +55,16 @@ Do not use this project for:
 - Bypassing login systems
 - Scraping private user data
 
-Many major websites intentionally prevent automated email account checks. For those websites, this tool shows `Manual Review` and provides an official public help or recovery page.
+Many major websites intentionally prevent automated email account checks. For those websites, this tool shows `Protected` and provides an official public help or recovery page. The tool does not guess usernames or claim that an account belongs to an email without a direct public signal.
 
 ## Status Meanings
 
 | Status | Meaning |
 | --- | --- |
 | Found | A public source returned a direct signal for the email. |
-| Possible Match | A public profile exists for a username guessed from the email local part. This does not prove ownership. |
 | Not Found | No public signal was found for that check. |
 | Unknown | The check could not complete because of network, API, or rate-limit issues. |
-| Manual Review | The website restricts reliable automated checks. A legal public help or recovery link is provided. |
+| Protected | The website restricts reliable automated checks. A legal public help or recovery link is provided. |
 
 ## Websites Covered
 
@@ -73,21 +72,22 @@ The tool includes public checks or safe review links for services such as:
 
 - Facebook
 - Instagram
-- Twitter/X
+- YouTube
+- TikTok
+- Snapchat
+- Reddit
+- X (formerly Twitter)
+- Pinterest
 - LinkedIn
 - GitHub
-- Reddit
-- TikTok
+- Threads
 - Discord
-- Spotify
-- Google
-- Microsoft
-- Amazon
-- Netflix
-- PayPal
+- Quora
+- Twitch
+- Telegram
 - Gravatar
 
-Some platforms allow limited public profile checks. Others block reliable automated account confirmation, so they are marked for manual review.
+Some platforms allow limited public email-signal checks. Others block reliable automated account confirmation, so they are marked as protected.
 
 ## Installation And Setup
 
@@ -341,9 +341,9 @@ Website           | Status         | Link
 ------------------------------------------------
 Gravatar          | Found          | https://www.gravatar.com/...
 GitHub            | Not Found      | -
-Reddit            | Possible Match | https://www.reddit.com/user/...
-Facebook          | Manual Review  | https://www.facebook.com/login/identify
-Instagram         | Manual Review  | https://www.instagram.com/accounts/password/reset/
+Facebook          | Protected      | https://www.facebook.com/login/identify
+Instagram         | Protected      | https://www.instagram.com/accounts/password/reset/
+X (formerly Twitter) | Protected   | https://twitter.com/account/begin_password_reset
 ```
 
 ## Exporting Results

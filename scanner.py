@@ -3,7 +3,7 @@
 This module only uses public, legal lookups. It does not attempt login,
 password reset abuse, bypassing, scraping private data, or rate-limit evasion.
 Some websites intentionally prevent account enumeration, so those checks are
-reported as "Manual Review" instead of pretending to be certain.
+reported as "Protected" instead of pretending to be certain.
 """
 
 from __future__ import annotations
@@ -38,18 +38,6 @@ def is_valid_email(email: str) -> bool:
     """Return True when the input looks like a normal email address."""
     pattern = r"^[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$"
     return bool(re.match(pattern, email.strip()))
-
-
-def username_candidates(email: str) -> list[str]:
-    """Create safe public-profile username guesses from the email local part."""
-    local_part = email.split("@", 1)[0].lower()
-    candidates = {
-        local_part,
-        re.sub(r"[^a-z0-9]", "", local_part),
-        local_part.replace(".", "-").replace("_", "-"),
-        local_part.replace(".", "_").replace("-", "_"),
-    }
-    return sorted(candidate for candidate in candidates if len(candidate) >= 3)
 
 
 def fetch_url(url: str, method: str = "GET") -> requests.Response | None:
@@ -131,70 +119,21 @@ def check_github_email(email: str) -> ScanResult:
     )
 
 
-PROFILE_SITES = [
-    ("Reddit", "https://www.reddit.com/user/{username}/"),
-    ("TikTok", "https://www.tiktok.com/@{username}"),
-    ("GitHub Username", "https://github.com/{username}"),
-    ("Twitter/X Username", "https://x.com/{username}"),
-    ("Instagram Username", "https://www.instagram.com/{username}/"),
-]
-
-
-def check_public_profile_candidates(email: str) -> list[ScanResult]:
-    """Look for public profiles using username guesses from the email local part."""
-    results: list[ScanResult] = []
-    candidates = username_candidates(email)
-
-    for site_name, url_template in PROFILE_SITES:
-        found_link = "-"
-        found_candidate = ""
-
-        for candidate in candidates:
-            url = url_template.format(username=candidate)
-            response = fetch_url(url, method="GET")
-            if response and response.status_code == 200:
-                found_link = url
-                found_candidate = candidate
-                break
-
-        if found_link != "-":
-            results.append(
-                ScanResult(
-                    website=site_name,
-                    status="Possible Match",
-                    link=found_link,
-                    method="Public username profile check",
-                    note=(
-                        f"Public profile exists for guessed username '{found_candidate}'. "
-                        "This does not prove the email owns it."
-                    ),
-                )
-            )
-        else:
-            results.append(
-                ScanResult(
-                    website=site_name,
-                    status="Not Found",
-                    link="-",
-                    method="Public username profile check",
-                    note="No public profile was found for the generated username guesses.",
-                )
-            )
-
-    return results
-
-
 MANUAL_REVIEW_SITES = [
     ("Facebook", "https://www.facebook.com/login/identify"),
     ("Instagram", "https://www.instagram.com/accounts/password/reset/"),
-    ("LinkedIn", "https://www.linkedin.com/"),
+    ("YouTube", "https://accounts.google.com/signin/recovery"),
+    ("TikTok", "https://www.tiktok.com/login/phone-or-email/email"),
+    ("Snapchat", "https://accounts.snapchat.com/accounts/password_reset_request"),
+    ("Reddit", "https://www.reddit.com/password"),
+    ("X (formerly Twitter)", "https://twitter.com/account/begin_password_reset"),
+    ("Pinterest", "https://www.pinterest.com/password/reset/"),
+    ("LinkedIn", "https://www.linkedin.com/uas/request-password-reset"),
+    ("Threads", "https://www.threads.net/login"),
     ("Discord", "https://discord.com/login"),
-    ("Spotify", "https://www.spotify.com/password-reset/"),
-    ("Google", "https://accounts.google.com/signin/recovery"),
-    ("Microsoft", "https://account.live.com/password/reset"),
-    ("Amazon", "https://www.amazon.com/ap/forgotpassword"),
-    ("Netflix", "https://www.netflix.com/LoginHelp"),
-    ("PayPal", "https://www.paypal.com/authflow/password-recovery/"),
+    ("Quora", "https://www.quora.com/forgot_password"),
+    ("Twitch", "https://www.twitch.tv/user/account-recovery"),
+    ("Telegram", "https://web.telegram.org/"),
 ]
 
 
@@ -203,12 +142,12 @@ def manual_review_results() -> list[ScanResult]:
     return [
         ScanResult(
             website=name,
-            status="Manual Review",
+            status="Protected",
             link=link,
-            method="Official public recovery/help page",
+            method="Official account recovery or login page",
             note=(
-                "Automated email-account confirmation is intentionally restricted. "
-                "Use only your own email or authorized investigations."
+                "This platform does not provide a safe public API to confirm accounts by email. "
+                "Use the official page only for your own email or authorized work."
             ),
         )
         for name, link in MANUAL_REVIEW_SITES
@@ -222,7 +161,6 @@ def scan_email(email: str) -> list[ScanResult]:
         raise ValueError("Please enter a valid email address.")
 
     results = [check_gravatar(clean_email), check_github_email(clean_email)]
-    results.extend(check_public_profile_candidates(clean_email))
     results.extend(manual_review_results())
     save_history(clean_email, results)
     return results

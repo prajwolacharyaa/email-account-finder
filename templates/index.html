@@ -11,26 +11,26 @@
       <section class="scanner">
         <div class="brand-row">
           <div>
-            <p class="eyebrow">OSINT Profiler</p>
+            <p class="eyebrow">Public Account Review</p>
             <h1>Email Account Finder</h1>
           </div>
-          <span class="status-pill">Legal public checks only</span>
+          <span class="status-pill">Privacy-first checks</span>
         </div>
 
         <form id="scan-form" class="scan-form">
-          <label for="email">Target email</label>
+          <label for="email">Email address</label>
           <div class="input-row">
             <input id="email" name="email" type="email" placeholder="name@example.com" autocomplete="off" required>
-            <button id="scan-button" type="submit">Search</button>
+            <button id="scan-button" type="submit">Check</button>
           </div>
-          <p class="hint">Use this only for your own accounts or authorized investigations.</p>
+          <p class="hint">Checks only public email signals and official account recovery pages. No username guessing.</p>
         </form>
 
         <div id="loader" class="loader hidden">
           <span></span>
           <span></span>
           <span></span>
-          Scanning public sources...
+          Checking public sources...
         </div>
 
         <div id="message" class="message hidden"></div>
@@ -61,9 +61,9 @@
       </section>
 
       <aside class="history">
-        <h2>Search History</h2>
+        <h2>Recent Checks</h2>
         <div id="history-list" class="history-list">
-          <p class="empty">No searches yet.</p>
+          <p class="empty">No checks yet.</p>
         </div>
       </aside>
     </main>

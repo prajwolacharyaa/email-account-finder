@@ -48,7 +48,7 @@ async function loadHistory() {
   const history = await response.json();
 
   if (!history.length) {
-    historyList.innerHTML = '<p class="empty">No searches yet.</p>';
+    historyList.innerHTML = '<p class="empty">No checks yet.</p>';
     return;
   }
 

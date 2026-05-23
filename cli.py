@@ -25,7 +25,12 @@ def main() -> None:
     parser.add_argument("--pdf", action="store_true", help="Export results to PDF")
     args = parser.parse_args()
 
-    results = scan_email(args.email)
+    try:
+        results = scan_email(args.email)
+    except ValueError as exc:
+        print(f"Error: {exc}")
+        return
+
     print_table(results)
 
     if args.csv:
