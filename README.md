@@ -1,6 +1,6 @@
 # account_finder
 
-account_finder is a beginner-friendly cybersecurity and OSINT tool that checks public email-related signals and provides safe official review links for popular websites.
+account_finder is a OSINT tool that checks public email-related signals and provides safe official review links for popular websites.
 
 The project is built for learning, ethical OSINT practice, and portfolio use. It includes both a web interface and a command-line interface, making it suitable for Kali Linux users, Windows users, and macOS users.
 
@@ -57,14 +57,6 @@ Do not use this project for:
 
 Many major websites intentionally prevent automated email account checks. For those websites, this tool shows `Protected` and provides an official public help or recovery page. The tool does not guess usernames or claim that an account belongs to an email without a direct public signal.
 
-## Status Meanings
-
-| Status | Meaning |
-| --- | --- |
-| Found | A public source returned a direct signal for the email. |
-| Not Found | No public signal was found for that check. |
-| Unknown | The check could not complete because of network, API, or rate-limit issues. |
-| Protected | The website restricts reliable automated checks. A legal public help or recovery link is provided. |
 
 ## Websites Covered
 
@@ -339,7 +331,6 @@ python cli.py target@example.com --pdf
 ```text
 Website           | Status         | Link
 ------------------------------------------------
-Gravatar          | Found          | https://www.gravatar.com/...
 GitHub            | Not Found      | -
 Facebook          | Protected      | https://www.facebook.com/login/identify
 Instagram         | Protected      | https://www.instagram.com/accounts/password/reset/
@@ -426,45 +417,7 @@ Then activate again:
 .venv\Scripts\Activate.ps1
 ```
 
-## Uploading To GitHub
 
-If this project is not already uploaded to GitHub, use these commands:
-
-```bash
-git init
-git add .
-git commit -m "Initial account_finder project"
-git branch -M main
-git remote add origin https://github.com/prajwolacharyaa/account_finder.git
-git push -u origin main
-```
-
-
-## Beginner Notes
-
-This project is intentionally simple so beginners can understand how it works.
-
-Main concepts used:
-
-- Python
-- Flask
-- HTML
-- CSS
-- JavaScript
-- Requests
-- Public OSINT checks
-- CSV export
-- PDF report generation
-
-You can improve this project by adding:
-
-- More public OSINT sources
-- Better rate-limit handling
-- API key support for official services
-- Better report templates
-- Docker support
-- Authentication for private local use
-- More advanced result filtering
 
 ## Disclaimer
 
